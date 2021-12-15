@@ -118,6 +118,51 @@
                         </div>
                     </div>
                 </div>
+                <div class="">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb my-3">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Article List</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="border-bottom mb-4 d-flex justify-content-between align-items-center pb-3">
+                            <h2 class="mb-0">Article List</h2>
+                            <a href="article-create.html" class="btn btn-outline-primary">Create Article</a>
+                        </div>
+                        <div class="">
+                            <table class="table table-bordered table-hover align-middle">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Owner</th>
+                                    <th>Control</th>
+                                    <th>Created At</th>
+                                </tr>
+                                </thead>
+                                <tbody id="rows">
+
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination mb-0">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </nav>
+                                <p class="mb-0">Total : 123</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -125,5 +170,119 @@
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/app.js"></script>
+<script>
+
+    let articles = [
+        {
+            id : 1,
+            title : "Lorem ipsum dolor sit amet, consectetur.",
+            category : [
+                "internet","computer"
+            ],
+            owner : "hein htet zan",
+            created_at : {
+                date : "15 Dec 2021",
+                time : "11:25 AM"
+            }
+        },
+        {
+            id : 2,
+            title : "Lorem ipsum dolor sit amet.",
+            category : [
+                "mobile"
+            ],
+            owner : "hein htet zan",
+            created_at : {
+                date : "15 Dec 2021",
+                time : "11:25 AM"
+            }
+        },
+        {
+            id : 3,
+            title : "Alias distinctio illo ipsa nam?",
+            category : [
+                "programming","mobile"
+            ],
+            owner : "hein htet zan",
+            created_at : {
+                date : "15 Dec 2021",
+                time : "11:25 AM"
+            }
+        },
+        {
+            id : 4,
+            title : "Ab amet enim porro temporibus.",
+            category : [
+                "internet","networking"
+            ],
+            owner : "hein htet zan",
+            created_at : {
+                date : "15 Dec 2021",
+                time : "11:25 AM"
+            }
+        },
+        {
+            id : 5,
+            title : "Facilis nam necessitatibus quam qui?",
+            category : [
+                "computer"
+            ],
+            owner : "hein htet zan",
+            created_at : {
+                date : "15 Dec 2021",
+                time : "11:25 AM"
+            }
+        }
+    ];
+
+    function showCategory(arr){
+        let result = "";
+        arr.forEach(a => {
+            result += `
+            <p class="badge bg-primary mb-0">
+                ${a}
+            </p>
+          `
+        })
+        return result;
+    }
+
+    articles.forEach(article => {
+
+        document.getElementById("rows").innerHTML += `
+            <tr>
+                <td>${article.id}</td>
+                <td class="small">${article.title}</td>
+                <td>
+                    ${ showCategory(article.category) }
+                </td>
+                <td class="small">
+                    ${article.owner}
+                </td>
+                <td>
+                    <a href="#" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-fw fa-info-circle"></i>
+                    </a>
+                    <a href="#" class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-fw fa-trash-alt"></i>
+                    </a>
+                    <a href="#" class="btn btn-sm btn-outline-warning">
+                        <i class="fas fa-fw fa-pencil-alt"></i>
+                    </a>
+                </td>
+                <td>
+                    <p class="small mb-0">
+                        <i class="fas fa-calendar"></i> ${article.created_at.date}
+                    </p>
+                    <p class="small mb-0">
+                        <i class="fas fa-clock"></i> ${article.created_at.time}
+                    </p>
+                </td>
+            </tr>
+        `;
+
+    });
+
+</script>
 </body>
 </html>
