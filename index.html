@@ -10,18 +10,55 @@
     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="css/app.css">
     <link rel="icon" href="images/logos/fav.png">
+    <style>
+        /*.show-sidebar{*/
+        /*    display: block !important;*/
+        /*    position: fixed;*/
+        /*    z-index: 5;*/
+        /*    width: 300px;*/
+        /*    animation: forSidebar 0.5s linear;*/
+        /*}*/
+        /*@keyframes forSidebar {*/
+        /*    from{*/
+        /*        transform: translateX(-300px);*/
+        /*    }*/
+        /*    to{*/
+        /*        transform: translateX(0px);*/
+        /*    }*/
+        /*}*/
+
+        @media screen and (max-width: 992px){
+            #sidebarCol{
+                transform: translateX(-300px);
+                position: fixed;
+                z-index: 5;
+                width: 300px;
+                transition: 0.5s;
+            }
+
+            #sidebarCol.show-sidebar{
+                transform: translateX(0px) !important;
+            }
+        }
+
+    </style>
 </head>
 <body class="bg-body">
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-2 bg-white shadow-sm">
-            <div class="sidebar min-vh-100  " >
+        <div class="col-lg-2 bg-white shadow-sm " id="sidebarCol">
+            <div class="sidebar min-vh-100" >
                 <ul>
                     <li class="my-3">
-                        <a href="index.html" >
-                            <img src="images/logos/logo.PNG" class="brand-logo" height="50" alt="">
-                        </a>
+                        <div class="d-flex justify-content-between">
+                            <a href="index.html" >
+                                <img src="images/logos/logo.PNG" class="brand-logo" height="50" alt="">
+                            </a>
+                            <button class="btn btn-light d-block d-lg-none" id="hideSidebar">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
                     </li>
                     <li class="sidebar-spacer"></li>
                     <li>
@@ -34,6 +71,18 @@
                         <a href="contact-message.html" class="sidebar-link">
                             <i class="fas fa-envelope fa-fw sidebar-link-icon"></i>
                             Contact Messages
+                        </a>
+                    </li>
+                    <li>
+                        <a href="calc.html" class="sidebar-link">
+                            <i class="fas fa-calculator fa-fw sidebar-link-icon"></i>
+                            Calculator
+                        </a>
+                    </li>
+                    <li>
+                        <a href="map.html" class="sidebar-link ">
+                            <i class="fas fa-map-marked fa-fw sidebar-link-icon"></i>
+                            Map
                         </a>
                     </li>
                     <li class="sidebar-spacer"></li>
@@ -85,15 +134,23 @@
                         </a>
                     </li>
                     <li class="sidebar-spacer"></li>
+                    <li>
+                        <a href="../it-news/sign-in.html" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-unlock"></i> Log Out
+                        </a>
+                    </li>
 
                 </ul>
             </div>
         </div>
-        <div class="col-lg-10">
+        <div class="col-12 col-lg-10">
             <div class="content">
-                <div class="header bg-primary p-2 rounded my-2">
+                <div class="header bg-primary mb-2 p-2 rounded mt-2">
                     <div class="d-flex justify-content-between">
-                        <div class="d-flex">
+                        <button class="btn btn-light d-block d-lg-none" id="showSidebar">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="d-flex d-none d-md-flex">
 
                             <input type="text" class="form-control d-inline me-1">
                             <button class="btn btn-light text-primary">
@@ -118,12 +175,172 @@
                         </div>
                     </div>
                 </div>
+                <div class="container-fluid px-0">
+                    <div class="row g-2">
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div>
+                                <div class="bg-white shadow-sm p-3 d-flex align-items-center">
+                                    <i class="fas fa-fw fa-suitcase fa-3x text-primary"></i>
+                                    <div class="mb-0 ms-3">
+                                        <p class="fw-bold h4 mb-0">24</p>
+                                        <p class="mb-0 text-black-50">Total Jobs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div>
+                                <div class="bg-white shadow-sm p-3 d-flex align-items-center">
+                                    <i class="fas fa-fw fa-users fa-3x text-primary"></i>
+                                    <div class="mb-0 ms-3">
+                                        <p class="fw-bold h4 mb-0">544</p>
+                                        <p class="mb-0 text-black-50">Total Users</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div>
+                                <div class="bg-white shadow-sm p-3 d-flex align-items-center">
+                                    <i class="fas fa-fw fa-box fa-3x text-primary"></i>
+                                    <div class="mb-0 ms-3">
+                                        <p class="fw-bold h4 mb-0">214</p>
+                                        <p class="mb-0 text-black-50">Total Order</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div>
+                                <div class="bg-white shadow-sm p-3 d-flex align-items-center">
+                                    <i class="fas fa-fw fa-map-pin fa-3x text-primary"></i>
+                                    <div class="mb-0 ms-3">
+                                        <p class="fw-bold h4 mb-0">16</p>
+                                        <p class="mb-0 text-black-50">Total Places</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-7">
+                            <div class="">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <canvas id="viewerChart" style="width: 100%;" height="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-5">
+                            <div class="card h-100">
+                                <div class="card-body">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <canvas id="catPerUser" style="width: 100%" height="400"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-5"></div>
             </div>
         </div>
     </div>
 </div>
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="node_modules/chart.js/dist/chart.min.js"></script>
 <script src="js/app.js"></script>
+<script>
+
+    //sidebar control start
+    let showSidebar = document.getElementById('showSidebar');
+    let hideSidebar = document.getElementById('hideSidebar');
+    let sidebarCol = document.getElementById('sidebarCol');
+
+    showSidebar.addEventListener('click',function (){
+        sidebarCol.classList.toggle('show-sidebar');
+    });
+
+    hideSidebar.addEventListener('click',function (){
+       sidebarCol.classList.toggle('show-sidebar');
+    });
+    //sidebar control end
+
+
+    //viewer chart start
+    let viewerChart  = document.getElementById('viewerChart').getContext('2d');
+    const myViewerChart = new Chart(viewerChart, {
+        type: 'line',
+        data: {
+            labels: ['6/1/2022','5/1/2022','4/1/2022','3/1/2022','2/1/2022','1/1/2022','31/12/2021'],
+            datasets: [
+                {
+                    label: '# viewer',
+                    data: [14,56,77,34,53,9,20],
+                    backgroundColor: '#0d6efd',
+                    borderColor: '#0d6efd',
+                    borderWidth: 1
+                },
+                {
+                    label: '# like',
+                    data: [34,53,9,20,14,56,77],
+                    backgroundColor: '#0DCAFA',
+                    borderColor: '#0DCAFA',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    //viewer chart end
+
+    let catPerUser = document.getElementById('catPerUser').getContext('2d');
+    const myCatPerUserChart = new Chart(catPerUser, {
+        type: 'doughnut',
+        data: {
+            labels: ['food','news','computer','mobile','programming'],
+            datasets: [{
+                label: '# Category per User',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>
 </body>
 </html>
